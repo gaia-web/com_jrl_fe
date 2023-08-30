@@ -1,87 +1,186 @@
+import {
+  FormControl,
+  InputLabel,
+  Input,
+  FormHelperText,
+  TextField,
+  Button,
+} from "@mui/material";
 import React from "react";
 import "./App.css";
-import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
-
-const containerStyle = {
-  width: "400px",
-  height: "400px",
-};
-
-const center = {
-  lat: -3.745,
-  lng: -38.523,
-};
 
 function App() {
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: "YOUR_API_KEY",
-  });
+  function handleSubmit() {
+    console.log("submit");
+  }
 
-  const [map, setMap] = React.useState(null);
-
-  const onLoad = React.useCallback(function callback(map: any) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
-
-    setMap(map);
-  }, []);
-
-  const onUnmount = React.useCallback(function callback(map: any) {
-    setMap(null);
-  }, []);
-
-  return isLoaded ? (
+  return (
     <div className="App">
-      {/* <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={10}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
-      >
-        Child components, such as markers, info windows, etc.
-        <></>
-      </GoogleMap> */}
-      <div style={{ width: "100%", display: "flex" }}>
+      <div className="background" />
+      <header>
+        <img src="logo.jpeg" />
+      </header>
+      <div className="container-1">
         <div
           style={{
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
+            fontFamily: "inital",
+            fontSize: "xxx-large",
+            color: "white",
+            // margin: "56px 20%",
+            whiteSpace: "pre-wrap",
           }}
         >
-          <div data-ux="Element">Contact Us</div>
-          <div data-ux="Element">JRL Shuttle Services </div>
-          <div data-ux="Element">
-            110-309 Fairmont Drive Saskatoon SK S7M 5G7{" "}
+          Prompt, Reliable, Quality Service Serving Saskatoon Since 1994
+        </div>
+        <div
+          style={{
+            fontFamily: "inital",
+            fontSize: "xxx-large",
+            color: "white",
+            // margin: "56px 20%",
+            whiteSpace: "pre-wrap",
+          }}
+        >
+          JRL Shuttle Services
+        </div>
+        <div
+          style={{
+            fontFamily: "inital",
+            fontSize: "xxx-large",
+            color: "white",
+            // margin: "56px 20%",
+            whiteSpace: "pre-wrap",
+          }}
+        >
+          110-309 Fairmont Drive Saskatoon SK S7M 5G7
+        </div>
+        <div
+          style={{
+            fontFamily: "inital",
+            fontSize: "xxx-large",
+            color: "white",
+            // margin: "56px 20%",
+            whiteSpace: "pre-wrap",
+          }}
+        >
+          adm.jrlshuttleservices@gmail.com
+        </div>
+        <div
+          style={{
+            fontFamily: "inital",
+            fontSize: "xxx-large",
+            color: "white",
+            // margin: "56px 20%",
+            whiteSpace: "pre-wrap",
+          }}
+        >
+          306-975-2222 306-220-5444
+        </div>
+        <div
+          style={{
+            fontFamily: "inital",
+            fontSize: "xxx-large",
+            color: "white",
+            // margin: "56px 20%",
+            whiteSpace: "pre-wrap",
+          }}
+        >
+          306-975-2222 306-220-5444
+        </div>
+      </div>
+      <div className="container-2">
+        <div className="contact-us">
+          <div
+            style={{
+              fontFamily: "inital",
+              fontSize: "xxx-large",
+              color: "cornflowerblue",
+              margin: "56px 20%",
+            }}
+          >
+            Contact Us
           </div>
-          <div data-ux="Element">adm.jrlshuttleservices@gmail.com </div>
-          <div data-ux="Element">306-975-2222 306-220-5444 </div>
+
+          <form
+            style={{
+              padding: "0 56px",
+            }}
+            onSubmit={(e: any) => {
+              e.preventDefault();
+              console.log(e.target[0].value);
+              console.log(e.target[2].value);
+              console.log(e.target[4].value);
+            }}
+          >
+            <FormControl
+              style={{
+                width: "100%",
+              }}
+            >
+              <TextField
+                style={{
+                  marginTop: "12px",
+                }}
+                required
+                id="email"
+                label="Email address"
+              />
+              <TextField
+                style={{
+                  marginTop: "12px",
+                }}
+                required
+                id="name"
+                label="Name"
+              />
+              <TextField
+                style={{
+                  marginTop: "12px",
+                }}
+                id="message"
+                label="Message"
+                multiline
+                required
+                rows={4}
+              />
+
+              <Button
+                style={{
+                  marginTop: "12px",
+                  maxWidth: "72px",
+                }}
+                type="submit"
+                fullWidth
+                variant="outlined"
+                color="primary"
+                // className={classes.submit}
+                // onClick={handleSubmit}
+              >
+                Submit
+              </Button>
+            </FormControl>
+          </form>
+          {/* <button>send email</button> */}
         </div>
         <iframe
-          // width="100%"å
-          // height="600"
           scrolling="no"
           loading="lazy"
           frameBorder="0"
-          style={{
-            flex: 1,
-            width: "100%",
-            height: "100%",
-            maxHeight: 600,
-            minHeight: 400
-          }}
+          className="map"
           src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=110-309%20Fairmont%20Drive%20Saskatoon%20SK%20S7M%205G7+(JRL%20Shuttle%20Services)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
         >
           <a href="https://www.maps.ie/population/">Find Population on Map</a>
         </iframe>
       </div>
+      <footer>
+        <span style={{ textAlign: "left" }}>
+          CopyRight @2023 JRL Shuttle Services - Saskatoon - All rights reserved
+        </span>
+        <span style={{ textAlign: "right" }}>
+          Powered by Chao Li, Sean Wang, and Will
+        </span>
+      </footer>
     </div>
-  ) : (
-    <>loading</>
   );
 }
 

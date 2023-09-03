@@ -8,6 +8,7 @@ import {
   FormLabel,
   Textarea,
 } from "@chakra-ui/react";
+import emailjs from "@emailjs/browser";
 
 const Home = () => {
   return (
@@ -21,8 +22,29 @@ const Home = () => {
             onSubmit={(e: any) => {
               e.preventDefault();
               console.log(e.target[0].value);
+              console.log(e.target[1].value);
               console.log(e.target[2].value);
-              console.log(e.target[4].value);
+              console.log(e.target);
+
+              emailjs
+                .send(
+                  "service_g16pcek",
+                  "template_u7z8hy7",
+                  {
+                    from_name: "JRL_shuttle",
+                    to_name: "CuStOmEr",
+                    message: "Hello whatever???",
+                  },
+                  "iNAiYa8lKcPAc2OoE"
+                )
+                .then(
+                  (result) => {
+                    console.log(result.text);
+                  },
+                  (error) => {
+                    console.log(error.text);
+                  }
+                );
             }}
           >
             <FormControl

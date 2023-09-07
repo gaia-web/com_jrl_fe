@@ -3,7 +3,6 @@ import {
   Flex,
   Text,
   IconButton,
-  Button,
   Stack,
   Collapse,
   Icon,
@@ -13,30 +12,32 @@ import {
   PopoverContent,
   useColorModeValue,
   useDisclosure,
+  Spacer,
+  VStack,
+  Button,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
   CloseIcon,
   ChevronDownIcon,
   ChevronRightIcon,
+  PhoneIcon,
 } from "@chakra-ui/icons";
 import { Link } from "preact-router/match";
 import logo from "../assets/logo.jpg";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
+  const currentPath = window.location.pathname;
 
   return (
-    <Box>
+    <Box margin={{ lg: "0 auto" }} minWidth={{ lg: "1200px" }}>
       <Flex
         bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
         py={{ base: 2 }}
         px={{ base: 4 }}
-        borderBottom={1}
-        borderStyle={"solid"}
-        borderColor={useColorModeValue("gray.200", "gray.900")}
         align={"center"}
       >
         <Flex
@@ -54,32 +55,17 @@ export default function WithSubnavigation() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          <Image src={logo} alt="hisen" maxWidth="15rem" maxHeight="10rem"/>
+          <Image
+            src={logo}
+            alt="logo"
+            maxWidth={{ base: "5rem", lg: "15rem" }}
+            maxHeight="10rem"
+          />
+          <Spacer display={{ base: "none", lg: "unset" }} />
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
-            <DesktopNav />
+            <DesktopNav currentPath={currentPath} />
           </Flex>
         </Flex>
-
-        <Stack
-          flex={{ base: 1, md: 0 }}
-          justify={"flex-end"}
-          direction={"row"}
-          spacing={6}
-        >
-          <Button
-            as={"a"}
-            fontSize={"sm"}
-            fontWeight={600}
-            color={"white"}
-            bg={"pink.400"}
-            href={"#"}
-            _hover={{
-              bg: "pink.300",
-            }}
-          >
-            联系我们
-          </Button>
-        </Stack>
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
@@ -89,53 +75,77 @@ export default function WithSubnavigation() {
   );
 }
 
-const DesktopNav = () => {
+interface DesktopAttri {
+  currentPath: string;
+}
+
+const DesktopNav = (attribute: DesktopAttri) => {
   const linkColor = useColorModeValue("gray.600", "gray.200");
   const linkHoverColor = useColorModeValue("gray.800", "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
-    <Stack direction={"row"} spacing={4}>
-      {NAV_ITEMS.map((navItem) => (
-        <Flex key={navItem.label} justifyContent="center" alignItems="center">
-          <Popover trigger={"hover"} placement={"bottom-start"}>
-            <PopoverTrigger>
-              <Box
-                p={2}
-                fontSize={"xl"}
-                fontWeight={500}
-                color={linkColor}
-                _hover={{
-                  textDecoration: "none",
-                  color: linkHoverColor,
-                }}
-              >
-                <Link activeClassName="active" href={navItem.href ?? "#"}>
-                  {navItem.label}
-                </Link>
-              </Box>
-            </PopoverTrigger>
+    <VStack
+      justifyContent="center"
+    >
+      <Flex width="100%" justifyContent="end">
+        <Icon color={"teal.100"} w={"2em"} h={"2em"} as={PhoneIcon} />
+        <Text marginLeft="1rem" fontSize="xl">
+          {" "}
+          306-975-2222 / 306-220-5444{" "}
+        </Text>
+      </Flex>
 
-            {navItem.children && (
-              <PopoverContent
-                border={0}
-                boxShadow={"xl"}
-                bg={popoverContentBgColor}
-                p={4}
-                rounded={"xl"}
-                minW={"sm"}
-              >
-                <Stack>
-                  {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} />
-                  ))}
-                </Stack>
-              </PopoverContent>
-            )}
-          </Popover>
-        </Flex>
-      ))}
-    </Stack>
+      <Stack direction={"row"} spacing={4}>
+        {NAV_ITEMS.map((navItem) => (
+          <Flex key={navItem.label} justifyContent="center" alignItems="center">
+            <Popover trigger={"hover"} placement={"bottom-start"}>
+              <PopoverTrigger>
+                <Box
+                  p={2}
+                  fontSize={"xl"}
+                  fontWeight={500}
+                  color={linkColor}
+                  _hover={{
+                    textDecoration: "none",
+                    color: linkHoverColor,
+                  }}
+                >
+                  <Link activeClassName="active" href={navItem.href ?? "#"}>
+                    <Button
+                      bgColor={
+                        attribute.currentPath === navItem.href
+                          ? "teal.200"
+                          : "transparent"
+                      }
+                    >
+                      {navItem.label}
+                    </Button>
+                  </Link>
+                </Box>
+              </PopoverTrigger>
+
+              {navItem.children && (
+                <PopoverContent
+                  border={0}
+                  boxShadow={"xl"}
+                  bg={popoverContentBgColor}
+                  p={4}
+                  rounded={"xl"}
+                  minW={"sm"}
+                >
+                  <Stack>
+                    {navItem.children.map((child) => (
+                      <DesktopSubNav key={child.label} {...child} />
+                    ))}
+                  </Stack>
+                </PopoverContent>
+              )}
+            </Popover>
+          </Flex>
+        ))}
+      </Stack>
+    </VStack>
   );
 };
 
@@ -253,54 +263,39 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: "首页",
+    label: "HOME",
     href: "/",
   },
   {
-    label: "移民通道 ",
+    label: "SERVICES",
     children: [
       {
-        label: "高管工签 / 投资人工签",
-        subLabel:
-          "Intra-Company Transferee Work Permit / Owner Operator Work Permit",
+        label: "Service 1",
+        subLabel: "Service 1",
         href: "#",
       },
       {
-        label: "BC省提名项目",
-        subLabel: "British Columbia Provincial Nominee Program",
+        label: "Service 2",
+        subLabel: "Service 2",
         href: "#",
       },
       {
-        label: "EEBC – BC省快速通道项目",
-        subLabel: "British Columbia Express Entry Program",
-        href: "#",
-      },
-      {
-        label: "联邦类通道移民项目",
-        subLabel: "Federal Express Entry Immigration Program",
-        href: "#",
-      },
-      {
-        label: "团聚移民项目",
-        subLabel: "Family Sponsorship Program",
+        label: "Service 3",
+        subLabel: "Service 3",
         href: "#",
       },
     ],
   },
   {
-    label: "成功案例",
+    label: "BOOK NOW",
     href: "#",
   },
   {
-    label: "关于我们",
+    label: "ABOUT US",
     href: "about",
   },
   {
-    label: "新闻 ",
-    href: "#",
-  },
-  {
-    label: "English ",
+    label: "CONTACT US",
     href: "#",
   },
 ];

@@ -7,17 +7,26 @@ import {
   Text,
   FormLabel,
   Textarea,
+  Divider,
+  Center,
 } from "@chakra-ui/react";
-import emailjs from "@emailjs/browser";
 
 const Home = () => {
   return (
     <Box width="100%">
-      <Flex>
-        <Box flex="1">
+      <Center margin="auto" height="800px" bgColor="cyan.100">
+        <Box>
+          <Text fontSize="3xl">About Us:</Text>
+          <Text>Email: adm.jrlshuttleservices@gmail.com</Text>
+          <Text>Company Name: JRL Shuttle Services</Text>
+          <Text>Address: 110-309 Fairmont Drive Saskatoon SK S7M 5G7</Text>
+        </Box>
+      </Center>
+      <Flex direction={{ base: "column", lg: "row" }}>
+        <Box flex={{ lg: "1" }}>
           <form
             style={{
-              padding: "0 56px",
+              padding: "4rem 10%",
             }}
             onSubmit={(e: any) => {
               e.preventDefault();
@@ -26,34 +35,42 @@ const Home = () => {
               console.log(e.target[2].value);
               console.log(e.target);
 
-              emailjs
-                .send(
-                  "service_g16pcek",
-                  "template_u7z8hy7",
-                  {
-                    from_name: "JRL_shuttle",
-                    to_name: "CuStOmEr",
-                    message: "Hello whatever???",
-                  },
-                  "iNAiYa8lKcPAc2OoE"
-                )
-                .then(
-                  (result) => {
-                    console.log(result.text);
-                  },
-                  (error) => {
-                    console.log(error.text);
-                  }
-                );
+              // emailjs
+              //   .send(
+              //     "service_g16pcek",
+              //     "template_u7z8hy7",
+              //     {
+              //       from_name: "JRL_shuttle",
+              //       to_name: "CuStOmEr",
+              //       message: "Hello whatever???",
+              //     },
+              //     "iNAiYa8lKcPAc2OoE"
+              //   )
+              //   .then(
+              //     (result) => {
+              //       console.log(result.text);
+              //     },
+              //     (error) => {
+              //       console.log(error.text);
+              //     }
+              //   );
             }}
           >
             <FormControl
               style={{
-                width: "100%",
+                margin: "auto",
+                height: "100%",
+                justifyContent: "center",
+
+                maxWidth: "80%",
               }}
               //   isRequired
             >
-              <Text fontSize="4xl">Contact Us</Text>
+              <Text fontSize="4xl" color="teal.400">
+                Contact Us
+              </Text>
+
+              <Divider margin="1rem 0" />
 
               <FormLabel requiredIndicator>Your name</FormLabel>
               <Input isRequired />
@@ -71,9 +88,9 @@ const Home = () => {
           </form>
         </Box>
 
-        <Box flex="1">
+        <Box flex={{ lg: "1" }}>
           <iframe
-            style={{ width: "100%", height: "100%" }}
+            style={{ width: "100%", height: "100%", minHeight: "400px" }}
             scrolling="no"
             loading="lazy"
             frameBorder="0"

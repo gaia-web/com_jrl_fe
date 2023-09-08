@@ -4,6 +4,8 @@ import { Route, Router } from "preact-router";
 import Home from "./routes/Home/Home";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import AboutUs from "./routes/AboutUs/AboutUs";
+import ContactUs from "./routes/ContactUs/ContactUs";
 
 export function App() {
   return (
@@ -14,7 +16,8 @@ export function App() {
         <Box flex="1">
           <Router>
             <Route path="/" component={Home} />
-            {/* <AboutUs path="/about" /> */}
+            <Route path="/about-us" component={AboutUs} />
+            <Route path="/contact-us" component={ContactUs} />
           </Router>
         </Box>
         <Footer />

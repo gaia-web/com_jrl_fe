@@ -18,16 +18,8 @@ import {
     IoPeopleSharp,
     IoGlobeOutline
 } from 'react-icons/io5';
-import { JSX } from 'preact';
 
-interface FeatureProps {
-    text: string;
-    description: string;
-    iconBg: string;
-    icon?: JSX.Element;
-}
-
-const Feature = ({ text, description, icon, iconBg }: FeatureProps) => {
+const Feature = ({ text, description, icon, iconBg }) => {
     return (
         <Stack direction={'column'} spacing={2}>
             <Stack direction={'row'} align={'center'}>

@@ -1,14 +1,6 @@
 import {
   Box,
-  Button,
-  Input,
-  FormControl,
   Flex,
-  Text,
-  FormLabel,
-  Textarea,
-  Divider,
-  Center,
 } from "@chakra-ui/react";
 import Banner from '../../components/Home/Banner/Banner'
 import Feature from "../../components/Home/Feature/Feature";

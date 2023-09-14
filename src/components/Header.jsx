@@ -79,11 +79,9 @@ export default function WithSubnavigation() {
   );
 }
 
-interface DesktopAttri {
-  currentPath: string;
-}
 
-const DesktopNav = (attribute: DesktopAttri) => {
+
+const DesktopNav = (attribute) => {
   const linkColor = useColorModeValue("gray.600", "gray.200");
   const linkHoverColor = useColorModeValue("gray.800", "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
@@ -153,7 +151,7 @@ const DesktopNav = (attribute: DesktopAttri) => {
   );
 };
 
-const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
+const DesktopSubNav = ({ label, href, subLabel }) => {
   return (
     <Box
       role={"group"}
@@ -205,7 +203,7 @@ const MobileNav = () => {
   );
 };
 
-const MobileNavItem = ({ label, children, href }: NavItem) => {
+const MobileNavItem = ({ label, children, href }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -258,14 +256,8 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
   );
 };
 
-interface NavItem {
-  label: string;
-  subLabel?: string;
-  children?: Array<NavItem>;
-  href?: string;
-}
 
-const NAV_ITEMS: Array<NavItem> = [
+const NAV_ITEMS = [
   {
     label: "HOME",
     href: "/",

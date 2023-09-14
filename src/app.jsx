@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import AboutUs from "./routes/AboutUs/AboutUs";
 import ContactUs from "./routes/ContactUs/ContactUs";
 import Booking from "./routes/Booking/Booking";
+import NotFound from "./routes/NotFound/NotFound";
 
 export function App() {
   return (
@@ -20,6 +21,7 @@ export function App() {
             <Route path="/about-us" component={AboutUs} />
             <Route path="/contact-us" component={ContactUs} />
             <Route path="/booking" component={Booking} />
+            <Route default component={NotFound} />
           </Router>
         </Box>
         <Footer />

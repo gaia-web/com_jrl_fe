@@ -29,7 +29,7 @@ const settings = {
 export default function CaptionCarousel() {
   // As we have used custom buttons, we need a reference variable to
   // change the state
-  const [slider, setSlider] = useState<Slider | null>(null)
+  const [slider, setSlider] = useState(null)
 
   // These are the breakpoints which changes the position of the
   // buttons as the screen size changes
@@ -134,7 +134,7 @@ export default function CaptionCarousel() {
   )
 }
 
-const renderText = (text: string) => {
+const renderText = (text) => {
   const lines = text.split('<br/>');
   return lines.map((line, index) => (
     <span key={index}>

@@ -18,72 +18,23 @@ import Testimonials from "../../components/Home/Testimonials/Testimonials";
 const Home = () => {
   return (
     <Box width="100%">
-      <Banner/>
-      <Feature/>
+      <Banner />
+      <Feature />
       <Flex direction={{ base: "column", lg: "row" }}>
         <Box flex={{ lg: "1" }}>
-          <form
-            style={{
-              padding: "4rem 10%",
-            }}
-            onSubmit={(e: any) => {
-              e.preventDefault();
-              console.log(e.target[0].value);
-              console.log(e.target[1].value);
-              console.log(e.target[2].value);
-              console.log(e.target);
-
-              // emailjs
-              //   .send(
-              //     "service_g16pcek",
-              //     "template_u7z8hy7",
-              //     {
-              //       from_name: "JRL_shuttle",
-              //       to_name: "CuStOmEr",
-              //       message: "Hello whatever???",
-              //     },
-              //     "iNAiYa8lKcPAc2OoE"
-              //   )
-              //   .then(
-              //     (result) => {
-              //       console.log(result.text);
-              //     },
-              //     (error) => {
-              //       console.log(error.text);
-              //     }
-              //   );
-            }}
-          >
-            <FormControl
-              style={{
-                margin: "auto",
-                height: "100%",
-                justifyContent: "center",
-
-                maxWidth: "80%",
-              }}
-              //   isRequired
-            >
-              <Text fontSize="4xl" color="teal.400">
-                Contact Us
-              </Text>
-
-              <Divider margin="1rem 0" />
-
-              <FormLabel requiredIndicator>Your name</FormLabel>
-              <Input isRequired />
-
-              <FormLabel requiredIndicator>Email Address</FormLabel>
-              <Input isRequired type="email" />
-
-              <FormLabel requiredIndicator>Message</FormLabel>
-              <Textarea />
-
-              <Button mt={4} colorScheme="teal" type="submit">
-                Submit
-              </Button>
-            </FormControl>
-          </form>
+          <iframe
+            width="100%"
+            
+            src="https://docs.google.com/forms/d/e/1FAIpQLScjYVrOrygVciyI3IKSCVdnvDDp-9daqrjzxxbIgqvL9m03gA/viewform?embedded=true"
+            frameborder="0"
+            style="border: none; height: 40vh;"
+            allowfullscreen
+            webkitallowfullscreen
+            mozallowfullscreen
+            msallowfullscreen
+            marginheight="0"
+            marginwidth="0"
+          >Loading…</iframe>
         </Box>
 
         <Box flex={{ lg: "1" }}>

@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AboutUs from "./routes/AboutUs/AboutUs";
 import ContactUs from "./routes/ContactUs/ContactUs";
+import Booking from "./routes/Booking/Booking";
 
 export function App() {
   return (
@@ -18,6 +19,7 @@ export function App() {
             <Route path="/" component={Home} />
             <Route path="/about-us" component={AboutUs} />
             <Route path="/contact-us" component={ContactUs} />
+            <Route path="/booking" component={Booking} />
           </Router>
         </Box>
         <Footer />

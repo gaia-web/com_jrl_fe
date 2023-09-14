@@ -1,71 +1,42 @@
-import { Box, Button, Divider, Flex, FormControl, FormLabel, Input, Text, Textarea } from "@chakra-ui/react";
+import { Box, Button, Divider, Flex, FormControl, FormLabel, Input, Text, Image } from "@chakra-ui/react";
 
 const ContactUs = () => {
   return (
-    <Flex direction={{ base: "column", lg: "row" }}>
-        <Box flex={{ lg: "1" }}>
-          <form
-            style={{
-              padding: "4rem 10%",
-            }}
-            onSubmit={(e: any) => {
-              e.preventDefault();
-              console.log(e.target[0].value);
-              console.log(e.target[1].value);
-              console.log(e.target[2].value);
-              console.log(e.target);
+    <Box>
+      <Image src="https://images.unsplash.com/photo-1484949909760-d37c642ad869?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Hero Image" width="100%" height="300px" objectFit="cover" />
 
-              // emailjs
-              //   .send(
-              //     "service_g16pcek",
-              //     "template_u7z8hy7",
-              //     {
-              //       from_name: "JRL_shuttle",
-              //       to_name: "CuStOmEr",
-              //       message: "Hello whatever???",
-              //     },
-              //     "iNAiYa8lKcPAc2OoE"
-              //   )
-              //   .then(
-              //     (result) => {
-              //       console.log(result.text);
-              //     },
-              //     (error) => {
-              //       console.log(error.text);
-              //     }
-              //   );
+      <Flex direction={{ base: "column", lg: "row" }} mt="4rem">
+        <Box flex={{ lg: "1" }}>
+          <Box
+            style={{
+              margin: "auto",
+              height: "100%",
+              justifyContent: "center",
+
+              maxWidth: "80%",
             }}
           >
-            <FormControl
-              style={{
-                margin: "auto",
-                height: "100%",
-                justifyContent: "center",
 
-                maxWidth: "80%",
-              }}
-              //   isRequired
-            >
-              <Text fontSize="4xl" color="teal.400">
-                Contact Us
-              </Text>
+            <Text fontSize="4xl" color="teal.400">
+              Contact Us
+            </Text>
 
-              <Divider margin="1rem 0" />
+            <Text fontSize="xl" mt="2rem">
+              Phone Number: <Box as="a" href="tel:3069752222" color="teal.400">306-975-2222</Box> &nbsp;/&nbsp; <Box as="a" href="tel:3062205444" color="teal.400">306-220-5444</Box>
+            </Text>
 
-              <FormLabel requiredIndicator>Your name</FormLabel>
-              <Input isRequired />
+            <Text fontSize="xl" my="2rem">
+              Email: <Box as="a" href="mailto:adm.jrlshuttleservices@gmail.com" color="teal.400">adm.jrlshuttleservices@gmail.com</Box>
+            </Text>
 
-              <FormLabel requiredIndicator>Email Address</FormLabel>
-              <Input isRequired type="email" />
 
-              <FormLabel requiredIndicator>Message</FormLabel>
-              <Textarea />
+            <Text fontSize="xl" >
+              Address: <Box as='span' color="teal.400">110-309 Fairmont Drive Saskatoon SK S7M 5G7</Box>
+            </Text>
 
-              <Button mt={4} colorScheme="teal" type="submit">
-                Submit
-              </Button>
-            </FormControl>
-          </form>
+            <Divider margin="1rem 0" />
+          </Box>
+
         </Box>
 
         <Box flex={{ lg: "1" }}>
@@ -81,6 +52,7 @@ const ContactUs = () => {
           </iframe>
         </Box>
       </Flex>
+    </Box>
   );
 };
 

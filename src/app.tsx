@@ -2,8 +2,8 @@ import { ChakraProvider, Divider } from "@chakra-ui/react";
 import { Flex, Box } from "@chakra-ui/react";
 import { Route, Router } from "preact-router";
 import Home from "./routes/Home/Home";
-import Header from "./components/header";
-import Footer from "./components/footer";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import AboutUs from "./routes/AboutUs/AboutUs";
 import ContactUs from "./routes/ContactUs/ContactUs";
 

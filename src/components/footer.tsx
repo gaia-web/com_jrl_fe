@@ -29,8 +29,8 @@ export default function SmallWithNavigation() {
           </Text>
         </Stack>
         <Text>
-          © 2023 HISEN INTERNATIONAL CONSULTING LTD. All rights reserved |
-          WEBSITE BY Gaia WEBSITE
+          © 2023JRL SHUTTLE SERVICES. All rights reserved |
+          Website design and development by  Gaia WEBSITE 
         </Text>
       </Container>
     </Box>

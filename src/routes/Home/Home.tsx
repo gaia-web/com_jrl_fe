@@ -10,18 +10,16 @@ import {
   Divider,
   Center,
 } from "@chakra-ui/react";
+import Banner from '../../components/Home/Banner/Banner'
+import Feature from "../../components/Home/Feature/Feature";
+import Testimonials from "../../components/Home/Testimonials/Testimonials";
+
 
 const Home = () => {
   return (
     <Box width="100%">
-      <Center margin="auto" height="800px" bgColor="cyan.100">
-        <Box>
-          <Text fontSize="3xl">About Us:</Text>
-          <Text>Email: adm.jrlshuttleservices@gmail.com</Text>
-          <Text>Company Name: JRL Shuttle Services</Text>
-          <Text>Address: 110-309 Fairmont Drive Saskatoon SK S7M 5G7</Text>
-        </Box>
-      </Center>
+      <Banner/>
+      <Feature/>
       <Flex direction={{ base: "column", lg: "row" }}>
         <Box flex={{ lg: "1" }}>
           <form
@@ -101,6 +99,7 @@ const Home = () => {
           </iframe>
         </Box>
       </Flex>
+      <Testimonials></Testimonials>
     </Box>
   );
 };

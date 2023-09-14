@@ -15,6 +15,7 @@ import {
   Spacer,
   VStack,
   Button,
+  Heading,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -54,12 +55,15 @@ export default function WithSubnavigation() {
             aria-label={"Toggle Navigation"}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
+        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }} alignItems="center">
+          <Heading display={{ base: "block", md: "none" }} fontSize={"xl"} color="#2E3B92">
+            JRL SHUTTLE SERVICES
+          </Heading>
           <Image
             src={logo}
             alt="logo"
             maxWidth={{ base: "5rem", lg: "15rem" }}
-            maxHeight="10rem"
+            maxHeight={{ base: "5rem", lg: "15rem" }}
           />
           <Spacer display={{ base: "none", lg: "unset" }} />
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
@@ -88,11 +92,11 @@ const DesktopNav = (attribute: DesktopAttri) => {
     <VStack
       justifyContent="center"
     >
-      <Flex width="100%" justifyContent="end">
+      <Flex width="100%" justifyContent="center" >
         <Icon color={"teal.100"} w={"2em"} h={"2em"} as={PhoneIcon} />
         <Text marginLeft="1rem" fontSize="xl">
           {" "}
-          306-975-2222 / 306-220-5444{" "}
+          <Box as="a" href="tel:3069752222" >306-975-2222</Box> / <Box as="a" href="tel:3062205444">306-220-5444{" "}</Box>
         </Text>
       </Flex>
 
@@ -287,7 +291,7 @@ const NAV_ITEMS: Array<NavItem> = [
     ],
   },
   {
-    label: "BOOK NOW",
+    label: "BOOKING",
     href: "#",
   },
   {

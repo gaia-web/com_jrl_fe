@@ -32,7 +32,7 @@ export default function WithSubnavigation() {
   const currentPath = window.location.pathname;
 
   return (
-    <Box margin={{ lg: "0 auto" }} minWidth={{ lg: "1200px" }}>
+    <Box margin={{ lg: "0 auto" }} minWidth={{ lg: "100vw" }}>
       <Flex
         bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
@@ -40,6 +40,7 @@ export default function WithSubnavigation() {
         py={{ base: 2 }}
         px={{ base: 4 }}
         align={"center"}
+        bgColor={"#e0e0e0"}
       >
         <Flex
           flex={{ base: 1, md: "auto" }}
@@ -55,16 +56,28 @@ export default function WithSubnavigation() {
             aria-label={"Toggle Navigation"}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }} alignItems="center">
-          <Heading display={{ base: "block", md: "none" }} fontSize={"xl"} color="#2E3B92">
+        <Flex
+          flex={{ base: 1 }}
+          justify={{ base: "center", md: "start" }}
+          alignItems="center"
+        >
+          <Heading
+            display={{ base: "block", md: "none" }}
+            fontSize={"xl"}
+            color="#2E3B92"
+          >
             JRL SHUTTLE SERVICES
           </Heading>
-          <Image
-            src={logo}
-            alt="logo"
-            maxWidth={{ base: "5rem", lg: "15rem" }}
-            maxHeight={{ base: "5rem", lg: "15rem" }}
-          />
+
+          <Link href={"/"}>
+            <Image
+              src={logo}
+              alt="logo"
+              maxWidth={{ base: "5rem", lg: "20rem" }}
+              maxHeight={{ base: "5rem", lg: "20rem" }}
+            />
+          </Link>
+
           <Spacer display={{ base: "none", lg: "unset" }} />
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav currentPath={currentPath} />
@@ -79,22 +92,24 @@ export default function WithSubnavigation() {
   );
 }
 
-
-
 const DesktopNav = (attribute) => {
   const linkColor = useColorModeValue("gray.600", "gray.200");
   const linkHoverColor = useColorModeValue("gray.800", "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
-    <VStack
-      justifyContent="center"
-    >
-      <Flex width="100%" justifyContent="center" >
+    <VStack justifyContent="center">
+      <Flex width="100%" justifyContent="center">
         <Icon color={"teal.100"} w={"2em"} h={"2em"} as={PhoneIcon} />
         <Text marginLeft="1rem" fontSize="xl">
           {" "}
-          <Box as="a" href="tel:3069752222" >306-975-2222</Box> / <Box as="a" href="tel:3062205444">306-220-5444{" "}</Box>
+          <Box as="a" href="tel:3069752222">
+            306-975-2222
+          </Box>{" "}
+          /{" "}
+          <Box as="a" href="tel:3062205444">
+            306-220-5444{" "}
+          </Box>
         </Text>
       </Flex>
 
@@ -256,7 +271,6 @@ const MobileNavItem = ({ label, children, href }) => {
   );
 };
 
-
 const NAV_ITEMS = [
   {
     label: "HOME",
@@ -266,21 +280,22 @@ const NAV_ITEMS = [
     label: "SERVICES",
     children: [
       {
-        label: "Service 1",
-        subLabel: "Service 1",
-        href: "#",
+        label: "Special Needs Transportation",
+        subLabel: "",
+        href: "transportation",
       },
       {
-        label: "Service 2",
-        subLabel: "Service 2",
-        href: "#",
+        label: "Medical Mobility",
+        subLabel: "",
+        href: "/mobility",
       },
       {
-        label: "Service 3",
-        subLabel: "Service 3",
-        href: "#",
+        label: "What we can transport",
+        subLabel: "",
+        href: "/more",
       },
     ],
+    href: "/services",
   },
   {
     label: "BOOKING",
